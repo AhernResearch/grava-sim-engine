@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "grava-sim-engine"
+version = "0.1.0"
+description = "Standalone PDM scoring engine for RL trajectory evaluation"
+requires-python = ">=3.9"
+dependencies = ["grava-common==0.1.0", "numpy>=1.23.4", "scipy>=1.10", "shapely>=2.0"]
+
+[project.scripts]
+grava-sim-engine = "grava_sim_engine.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.optional-dependencies]
+server = ["fastapi>=0.100", "uvicorn[standard]>=0.20"]
+navsim = ["navsim @ git+https://github.com/autonomousvision/navsim.git@0811876c274e8b058ab2be9b3dcd4d37bd23f177"]
